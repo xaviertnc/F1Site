@@ -1,0 +1,6 @@
+env-local.php
+vendors
+storage
+*sublime*
+*.log
+*.zip
