@@ -41,7 +41,7 @@ class System {
       echo '<div class="error"><h3>', $error, '</h3>', PHP_EOL;
       if ( $trace and __DEBUG__ )
       {
-        dump( $trace );
+        echo '<pre>', print_r( $trace, true ), '</pre>';
       }      
       echo '</div>', PHP_EOL;
     }
@@ -53,4 +53,4 @@ class System {
 
 $app->sys = new System();
 
-register_shutdown_function($app->sys->shutdown);
+register_shutdown_function(array($app->sys, 'shutdown'));

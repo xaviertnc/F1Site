@@ -10,7 +10,7 @@
  */
 
 
-include __VENDORS__ . '/f1/logger.php';
+include $app->env->vendors . '/f1/logger.php';
 
 
 $app->log = new F1\Logger();

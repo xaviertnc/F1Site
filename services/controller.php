@@ -12,13 +12,24 @@
 
 class Controller {
 
+  private $app;
+
+
+  public $name;
+  public $path;
   public $file;
 
-  public function render()
+
+  public function __construct( $app )
   {
+    $this->app = $app;
+    $this->name = 'home';
+    $this->path = $app->env->site;
+    $this->file = $this->path . '/' . $this->name . '.php';
   }
+
 
 }
 
 
-$app->ctrl = new Controller($app->req);
+$app->ctrl = new Controller( $app );

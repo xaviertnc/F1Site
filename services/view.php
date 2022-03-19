@@ -12,11 +12,21 @@
 
 class View {
 
-  public function render()
+  private $app;
+
+
+  public function __construct( $app )
   {
+    $this->app = $app;
+  }
+
+
+  public function getFile( $type = 'html.php' )
+  {
+    return $this->app->ctrl->path . '/' . $this->app->ctrl->name . '.' . $type;
   }
 
 }
 
 
-$app->view = new View();
+$app->view = new View( $app );
