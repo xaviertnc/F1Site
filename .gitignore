@@ -1,8 +1,8 @@
-storage/*
-vendors/*
-env-local.php
-!storage/logs/.keep
-!vendors/.keep
+app/storage/*
+app/vendors/*
+app/env-local.php
+!app/storage/logs/.keep
+!app/vendors/.keep
 *sublime*
 *.log
 *.zip

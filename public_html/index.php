@@ -8,7 +8,7 @@
 
 $app = new stdClass();
 
-include __DIR__ . '/env-local.php';
+include __DIR__ . '/../app/env-local.php';
 
 include $app->env->services . '/init.php';
 
