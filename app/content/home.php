@@ -9,4 +9,4 @@
  * 
  */
 
-include $app->view->getFile( 'html.php' );
+include $app->view->getFile();

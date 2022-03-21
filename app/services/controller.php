@@ -14,9 +14,8 @@ class Controller {
 
   private $app;
 
-
+  public $dir;
   public $name;
-  public $path;
   public $file;
 
 
@@ -24,12 +23,11 @@ class Controller {
   {
     $this->app = $app;
     $this->name = 'home';
-    $this->path = $app->env->site;
-    $this->file = $this->path . '/' . $this->name . '.php';
+    $this->dir = $app->siteDir;
+    $this->file = $this->dir . '/' . $this->name . '.php';
   }
-
 
 }
 
 
-$app->ctrl = new Controller( $app );
+$app->page = new Controller( $app );

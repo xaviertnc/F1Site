@@ -12,10 +12,18 @@
 
 class System {
 
+  private $app;
+
+
+  public function __construct( $app )
+  {
+     $this->app = $app;
+  }
+
+
   public function shutdown()
   {
-    global $app;
-
+    $app = $this->app;
     $trace = error_get_last();
 
     $error = ( isset( $app->req ) and isset( $app->req->error ) )
@@ -51,6 +59,6 @@ class System {
 
 
 
-$app->sys = new System();
+$app->sys = new System( $app );
 
-register_shutdown_function(array($app->sys, 'shutdown'));
+register_shutdown_function( [ $app->sys, 'shutdown' ] );

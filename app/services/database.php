@@ -10,7 +10,7 @@
  */
 
 
-include $app->env->vendors . '/f1/database.php';
+include $app->vendorsDir . '/f1/database.php';
 
 
 $app->db = new F1\Database();

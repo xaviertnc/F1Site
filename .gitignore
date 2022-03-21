@@ -1,6 +1,6 @@
 app/storage/*
 app/vendors/*
-app/env-local.php
+app/config.php
 !app/storage/logs/.keep
 !app/vendors/.keep
 *sublime*

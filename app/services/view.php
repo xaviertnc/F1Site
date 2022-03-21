@@ -14,6 +14,8 @@ class View {
 
   private $app;
 
+  public $title;
+
 
   public function __construct( $app )
   {
@@ -21,9 +23,21 @@ class View {
   }
 
 
+  public function getTitle()
+  {
+    return $this->title ?: $this->app->page->name;
+  }
+
+
   public function getFile( $type = 'html.php' )
   {
-    return $this->app->ctrl->path . '/' . $this->app->ctrl->name . '.' . $type;
+    return $this->app->page->dir . '/' . $this->app->page->name . '.' . $type;
+  }
+
+
+  public function getTemplate( $name )
+  {
+     return $this->app->themeDir . '/' . $name . '.html.php';
   }
 
 }

@@ -8,8 +8,8 @@
 
 $app = new stdClass();
 
-include __DIR__ . '/../app/env-local.php';
+include __DIR__ . '/../app/config.php';
 
-include $app->env->services . '/init.php';
+include $app->servicesDir . '/bootstrap.php';
 
-include $app->ctrl->file;
+include $app->page->file;
