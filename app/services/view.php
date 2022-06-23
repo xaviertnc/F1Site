@@ -19,12 +19,15 @@ class View {
 
   public $name;
 
+  public $theme;
+
   public $title;
 
 
   public function __construct( $app )
   {
     $this->app = $app;
+    $this->theme = $app->theme;
     $this->dir = $app->controller->dir;
     $this->name = $app->controller->name;
   }
@@ -44,7 +47,7 @@ class View {
 
   public function getThemeFile( $name, $ext = '.html' )
   {
-     return $this->app->themeDir . '/' . $name . $ext;
+     return $this->app->themesDir . '/' . $this->theme . '/' . $name . $ext;
   }
 
 

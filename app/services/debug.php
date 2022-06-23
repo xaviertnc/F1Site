@@ -48,7 +48,7 @@ class Debug {
       }
     }
 
-    if ( ! __PROD__ )
+    if ( __ENV__ !== 'Production' )
     {
       echo '<div class="error"><h3>', $error, '</h3>', PHP_EOL;
       if ( $trace and __DEBUG__ )
