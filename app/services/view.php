@@ -14,30 +14,49 @@ class View {
 
   private $app;
 
+  
+  public $dir;
+
+  public $name;
+
   public $title;
 
 
   public function __construct( $app )
   {
     $this->app = $app;
+    $this->dir = $app->controller->dir;
+    $this->name = $app->controller->name;
   }
 
 
   public function getTitle()
   {
-    return $this->title ?: $this->app->page->name;
+    return $this->title ?: $this->name;
   }
 
 
-  public function getFile( $type = 'html.php' )
+  public function getFile( $ext = '.html' )
   {
-    return $this->app->page->dir . '/' . $this->app->page->name . '.' . $type;
+    return $this->dir . '/' . $this->name . $ext;
   }
 
 
-  public function getTemplate( $name )
+  public function getThemeFile( $name, $ext = '.html' )
   {
-     return $this->app->themeDir . '/' . $name . '.html.php';
+     return $this->app->themeDir . '/' . $name . $ext;
+  }
+
+
+  public function getStylesFile()
+  {
+    return $this->getFile( '.css' );
+  }
+
+
+  public function getScriptFile()
+  {
+    return $this->getFile( '.js' );
   }
 
 }

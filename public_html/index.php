@@ -6,10 +6,8 @@
  * ==   C. Moller - 19 Mar 2022   ==
  ***********************************/
 
-$app = new stdClass();
+define( '__PROD__' , false );
+define( '__DEBUG__', true  );
+define( '__ROOT_DIR__', dirname( __DIR__ ) );
 
-include __DIR__ . '/../app/config.php';
-
-include $app->servicesDir . '/bootstrap.php';
-
-include $app->page->file;
+include __ROOT_DIR__ . '/app/run.php';

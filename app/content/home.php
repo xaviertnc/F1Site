@@ -9,4 +9,6 @@
  * 
  */
 
+$app->view->title = 'Home Page';
+
 include $app->view->getFile();

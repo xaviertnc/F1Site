@@ -1,0 +1,29 @@
+/* Page specific styles */
+h1 { color: red; }
+
+/*article {
+  background: cyan;
+  border: 1px solid cyan;
+}
+*/
+
+body {
+  color: slategrey;
+}
+
+aside {
+	position: fixed;
+	right: 1em;
+	bottom: 1em;
+  border: 1px solid;
+}
+
+.row { background: lightcyan; }
+.row:nth-child(even) { background: paleturquoise; }
+
+.block { background: orangered; }
+.block:nth-child(even) { background: orange; }
+
+.item {  padding: 0.5em; margin: 0.5em; }
+
+.container { max-width: 1024px; margin: auto; }

@@ -55,6 +55,13 @@ class System {
     }
 	}
 
+  public function dump( $var )
+  {
+    echo '<pre>';
+    print_r( $var );
+    echo '</pre>';
+  }
+
 } // end: Class System
 
 
