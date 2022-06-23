@@ -7,6 +7,9 @@
  * 
  * Date: 19 Mar 2022
  * 
+ * Last Update: 23 Jun 2022
+ *   - Implement basic routing logic.
+ * 
  */
 
 
@@ -26,24 +29,24 @@ class Controller {
 
     $req = $app->req;
 
-    if ( count( $req->segments ) < 2 )
-    {
-      $this->dir = $app->contentDir;
-      $this->name = $app->homePage;
-    }
-    else
+    if ( $req->segments )
     {
       $this->dir = $app->contentDir . '/' . $req->path;
       $this->name = end( $req->segments );
+    }
+    else
+    {
+      $this->dir = $app->contentDir . '/' . $app->homePage;
+      $this->name = $app->homePage;
     }
     
   }
 
 
-  public function getFile()
+  public function getFile( $ext = '.php' )
   {
 
-    return $this->dir . '/' . $this->name . '.php';
+    return $this->dir . '/' . $this->name . $ext;
 
   }
 

@@ -22,7 +22,7 @@ class Request {
     $this->baseUri = $app->baseUri;
     $this->uri = $_SERVER[ 'REQUEST_URI' ];
     $this->path = $this->getPath();
-    $this->segments = explode( '/', $this->path ); 
+    $this->segments = $this->path ? explode( '/', $this->path ) : []; 
   }
 
   public function get( $param, $default = null )

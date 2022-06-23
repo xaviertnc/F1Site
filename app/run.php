@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ./services/bootstrap.php
+ * ./services/run.php
  *
  * C. Moller <xavier.tnc@gmail.com>
  * 
