@@ -1,16 +1,20 @@
 <?php namespace F1S;
 
 /**
- * ./services/system.php
+ * ./services/debug.php
  *
  * C. Moller <xavier.tnc@gmail.com>
  * 
  * Date: 19 Mar 2022
  * 
+ * Last update: 23 Jun 2022
+ *
+ *  - Rename class from System to Debug
+ * 
  */
 
 
-class System {
+class Debug {
 
   private $app;
 
@@ -21,7 +25,7 @@ class System {
   }
 
 
-  public function shutdown()
+  public function interceptErrors()
   {
     $app = $this->app;
     $trace = error_get_last();
@@ -62,10 +66,10 @@ class System {
     echo '</pre>';
   }
 
-} // end: Class System
+} // end: Class Debug
 
 
 
-$app->sys = new System( $app );
+$app->debug = new Debug( $app );
 
-register_shutdown_function( [ $app->sys, 'shutdown' ] );
+register_shutdown_function( [ $app->debug, 'interceptErrors' ] );
