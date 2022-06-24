@@ -1,75 +1,21 @@
-<?php namespace F1S;
+<?php
+
+include $app->vendorsDir . '/f1/debug/debug.php';
 
 /**
- * ./services/debug.php
+ * app/services/debug.php
  *
- * C. Moller <xavier.tnc@gmail.com>
+ * @author C. Moller <xavier.tnc@gmail.com>
  * 
- * Date: 19 Mar 2022
- * 
- * Last update: 23 Jun 2022
- *
- *  - Rename class from System to Debug
+ * Date: 23 June 2022
  * 
  */
 
+use F1;
 
-class Debug {
+$app->debugLevel = ( __ENV__ == 'Prod' ) ? 1 : ( __DEBUG__ ? 3 : 2 );
+$app->debugLogFile = $app->storageDir . '/logs/' . date( Debug::$shortDateFormat ) . '.log';
 
-  private $app;
+$app->debug = new Debug( $app->debugLevel, $app->debugLogFile );
 
-
-  public function __construct( $app )
-  {
-     $this->app = $app;
-  }
-
-
-  public function interceptErrors()
-  {
-    $app = $this->app;
-    $trace = error_get_last();
-
-    $error = ( isset( $app->req ) and isset( $app->req->error ) )
-      ? $app->req->error
-      : ( $trace ? 'Oops, something went wrong!' : '' );
-
-    if ( ! $error )
-    {
-      exit;
-    }
-
-    if ( isset( $app->log ) )
-    {
-      $app->log->error( $error );
-      if ( $trace and __DEBUG__ )
-      {
-        $app->log->trace( print_r( $trace, true ) );
-      }
-    }
-
-    if ( __ENV__ !== 'Production' )
-    {
-      echo '<div class="error"><h3>', $error, '</h3>', PHP_EOL;
-      if ( $trace and __DEBUG__ )
-      {
-        echo '<pre>', print_r( $trace, true ), '</pre>';
-      }      
-      echo '</div>', PHP_EOL;
-    }
-	}
-
-  public function dump( $var )
-  {
-    echo '<pre>';
-    print_r( $var );
-    echo '</pre>';
-  }
-
-} // end: Class Debug
-
-
-
-$app->debug = new Debug( $app );
-
-register_shutdown_function( [ $app->debug, 'interceptErrors' ] );
+register_shutdown_function( [ $app->debug, 'onShutdown' ] );

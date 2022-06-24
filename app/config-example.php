@@ -1,29 +1,28 @@
 <?php
 
 /**
- * config-example.php
- *
- * C. Moller <xavier.tnc@gmail.com>
+ * ./app/config-example.php
  * 
- * Date: 19 Mar 2022
+ * Application hosting server evironment info +
+ * Settings specific to this specific instance of the application.
  * 
  */
-
-define( '__PROD__' , false );
-define( '__DEBUG__', true  );
 
 $app->timezone = 'Africa/Johannesburg';
 
 $app->servicesDir = __DIR__ . '/services';
 $app->vendorsDir  = __DIR__ . '/vendors';
 $app->storageDir  = __DIR__ . '/storage';
-$app->siteDir     = __DIR__ . '/content';
-$app->themeDir    = __DIR__ . '/themes/default';
+$app->contentDir  = __DIR__ . '/content';
+$app->themesDir   = __DIR__ . '/themes';
 
 $app->host    = 'F1Site.localhost';
-$app->baseUri = '/public_html';
-$app->cssUri  = $app->baseUri . '/css';
-$app->jsUri   = $app->baseUri . '/js';
+$app->baseUri = 'public_html';
+$app->cssUri  = 'css';
+$app->jsUri   = 'js';
+
+$app->theme = 'default';
+$app->homePage = 'home'; 
 
 $app->dbConnection = [
   'DBHOST' => 'localhost',

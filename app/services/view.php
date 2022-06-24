@@ -1,9 +1,9 @@
 <?php namespace F1S;
 
 /**
- * ./services/view.php
+ * app/services/view.php
  *
- * C. Moller <xavier.tnc@gmail.com>
+ * @author C. Moller <xavier.tnc@gmail.com>
  * 
  * Date: 19 Mar 2022
  * 

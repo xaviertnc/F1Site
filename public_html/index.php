@@ -7,8 +7,8 @@
  * ==  Last Update - 23 Jun 2022  ==
  ***********************************/
 
+define( '__ENV__', 'Prod' );
 define( '__DEBUG__', true  );
-define( '__ENV__' , 'Production' );
 define( '__ROOT_DIR__', dirname( __DIR__ ) );
 
 include __ROOT_DIR__ . '/app/run.php';

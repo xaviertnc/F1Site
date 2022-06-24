@@ -1,55 +1,19 @@
-<?php namespace F1S;
+<?php
+
+include $app->vendorsDir . '/f1/controller/controller.php';
 
 /**
- * ./services/controller.php
+ * app/services/controller.php
  *
- * C. Moller <xavier.tnc@gmail.com>
+ * @author C. Moller <xavier.tnc@gmail.com>
  * 
- * Date: 19 Mar 2022
- * 
- * Last Update: 23 Jun 2022
- *   - Implement basic routing logic.
+ * Date: 24 June 2022
  * 
  */
 
+use F1;
 
-class Controller {
+$app->req = $app->http->req;
+$app->requestedPage = $app->req->segments ? end( $app->req->segments ) : $app->homePage; 
 
-  private $app;
-
-  public $dir;
-
-  public $name;
-
-
-  public function __construct( $app )
-  {
-
-    $this->app = $app;
-
-    $req = $app->req;
-
-    if ( $req->segments )
-    {
-      $this->dir = $app->contentDir . '/' . $req->path;
-      $this->name = end( $req->segments );
-    }
-    else
-    {
-      $this->dir = $app->contentDir . '/' . $app->homePage;
-      $this->name = $app->homePage;
-    }
-    
-  }
-
-
-  public function getFile( $ext = '.php' )
-  {
-
-    return $this->dir . '/' . $this->name . $ext;
-
-  }
-
-}
-
-$app->controller = new Controller( $app );
+$app->controller = new Controller( $app->contentDir, $app->req->path, $app->requestedPage );

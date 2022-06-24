@@ -1,21 +1,16 @@
-<?php namespace F1S;
+<?php
+
+include $app->vendorsDir . '/f1/auth/auth.php';
 
 /**
- * ./services/auth.php
+ * app/services/auth.php
  *
- * C. Moller <xavier.tnc@gmail.com>
+ * @author C. Moller <xavier.tnc@gmail.com>
  * 
- * Date: 19 Mar 2022
+ * Date: 24 June 2022
  * 
  */
 
-class Auth {
-
-  public function login()
-  {
-  }
-  
-}
-
+use F1;
 
 $app->auth = new Auth();
