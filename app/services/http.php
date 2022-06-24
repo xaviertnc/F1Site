@@ -11,6 +11,6 @@ include $app->vendorsDir . '/f1/http/http.php';
  * 
  */
 
-use F1;
+use F1\HTTP;
 
 $app->http = new HTTP( $app->baseUri );

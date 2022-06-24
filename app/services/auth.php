@@ -11,6 +11,6 @@ include $app->vendorsDir . '/f1/auth/auth.php';
  * 
  */
 
-use F1;
+use F1\Auth;
 
 $app->auth = new Auth();

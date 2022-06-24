@@ -11,7 +11,7 @@ include $app->vendorsDir . '/f1/controller/controller.php';
  * 
  */
 
-use F1;
+use F1\Controller;
 
 $app->req = $app->http->req;
 $app->requestedPage = $app->req->segments ? end( $app->req->segments ) : $app->homePage; 
