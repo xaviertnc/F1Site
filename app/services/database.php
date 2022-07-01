@@ -9,6 +9,8 @@ include $app->vendorsDir . '/f1/database/database.php';
  * 
  * Date: 23 June 2022
  * 
+ * Last update: 01 July 2022
+ * 
  */
 
 use F1\DB;

@@ -11,6 +11,8 @@ include $app->vendorsDir . '/f1/view/view.php';
  * 
  * Date: 01 July 2022
  * 
+ * Last update: 01 July 2022
+ * 
  */
 
 use F1\View;

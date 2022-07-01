@@ -9,6 +9,8 @@ include $app->vendorsDir . '/f1/debug/debug.php';
  * 
  * Date: 23 June 2022
  * 
+ * Last update: 01 July 2022
+ * 
  */
 
 use F1\Debug;
@@ -29,6 +31,5 @@ $app->debugLogFile = $app->storageDir . DIRECTORY_SEPARATOR . 'logs' .
 $debug = new Debug( $app->debugLevel, $app->debugLogFile );
 
 register_shutdown_function( [ $debug, 'onShutdown' ] );
-
 
 $app->debug = $debug;
