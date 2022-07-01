@@ -8,13 +8,13 @@
  * 
  */
 
-$app->timezone = 'Africa/Johannesburg';
+date_default_timezone_set( 'Africa/Johannesburg' );
 
-$app->servicesDir = __DIR__ . '/services';
-$app->vendorsDir  = __DIR__ . '/vendors';
-$app->storageDir  = __DIR__ . '/storage';
-$app->contentDir  = __DIR__ . '/content';
-$app->themesDir   = __DIR__ . '/themes';
+$app->servicesDir = __DIR__ . __DS__ . 'services';
+$app->vendorsDir  = __DIR__ . __DS__ . 'vendors';
+$app->storageDir  = __DIR__ . __DS__ . 'storage';
+$app->contentDir  = __DIR__ . __DS__ . 'content';
+$app->themesDir   = __DIR__ . __DS__ . 'themes';
 
 $app->host    = 'F1Site.localhost';
 $app->baseUri = 'public_html';

@@ -13,8 +13,17 @@ include $app->vendorsDir . '/f1/debug/debug.php';
 
 use F1\Debug;
 
-$app->debugLevel = ( __ENV__ == 'Prod' ) ? 1 : ( __DEBUG__ ? 3 : 2 );
-$app->debugLogFile = $app->storageDir . '/logs/' . date( Debug::$shortDateFormat ) . '.log';
+if ( __ENV__ == 'Prod' )
+{
+  $app->debugLevel = __DEBUG__ ? 2 : 1;
+}
+else
+{
+  $app->debugLevel = __DEBUG__ ? 3 : 2;
+}
+
+$app->debugLogFile = $app->storageDir . DIRECTORY_SEPARATOR . 'logs' .
+  DIRECTORY_SEPARATOR . date( Debug::$shortDateFormat ) . '.log';
 
 $app->debug = new Debug( $app->debugLevel, $app->debugLogFile );
 
