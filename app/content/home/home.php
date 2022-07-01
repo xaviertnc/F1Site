@@ -9,6 +9,6 @@
  * 
  */
 
-$app->view->title = 'Home Page';
+$view->title = 'Home Page';
 
-include $app->view->getFile();
+include $view->getFile();

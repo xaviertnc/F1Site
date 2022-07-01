@@ -13,7 +13,8 @@ include $app->vendorsDir . '/f1/controller/controller.php';
 
 use F1\Controller;
 
-$app->req = $app->http->req;
-$app->requestedPage = $app->req->segments ? end( $app->req->segments ) : $app->homePage; 
-
-$app->controller = new Controller( $app->contentDir, $app->req->path, $app->requestedPage );
+$app->controller = new Controller(
+  $app->contentDir,
+  $http->req->path ?: $app->homePage,
+  $http->req->path ? end( $http->req->segments ) : $app->homePage
+);

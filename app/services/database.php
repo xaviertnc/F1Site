@@ -13,4 +13,6 @@ include $app->vendorsDir . '/f1/database/database.php';
 
 use F1\DB;
 
-$app->db = new DB();
+$db = new DB();
+
+$app->db = $db;

@@ -25,6 +25,10 @@ else
 $app->debugLogFile = $app->storageDir . DIRECTORY_SEPARATOR . 'logs' .
   DIRECTORY_SEPARATOR . date( Debug::$shortDateFormat ) . '.log';
 
-$app->debug = new Debug( $app->debugLevel, $app->debugLogFile );
 
-register_shutdown_function( [ $app->debug, 'onShutdown' ] );
+$debug = new Debug( $app->debugLevel, $app->debugLogFile );
+
+register_shutdown_function( [ $debug, 'onShutdown' ] );
+
+
+$app->debug = $debug;

@@ -1,4 +1,4 @@
-<?php include $app->view->getThemeFile( 'site/head' ); ?>
+<?php include $view->getThemeFile( 'site-header' ); ?>
 
 <header>
   <h2>File Explorer Demo</h2>
@@ -12,4 +12,4 @@
   <p>File Explorer Demo - Footer</p>
 </footer>
 
-<?php include $app->view->getThemeFile( 'site/foot' ); ?>
+<?php include $view->getThemeFile( 'site-footer' ); ?>

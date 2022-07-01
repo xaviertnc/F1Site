@@ -9,6 +9,6 @@
  * 
  */
 
-$app->view->title = 'File Explorer Demo';
+$view->title = 'File Explorer Demo';
 
-include $app->view->getFile();
+include $view->getFile();
