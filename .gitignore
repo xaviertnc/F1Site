@@ -6,3 +6,5 @@ app/config.php
 *sublime*
 *.log
 *.zip
+*_compiled.php
+*_manifest.php

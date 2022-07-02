@@ -8,8 +8,9 @@
  ***********************************/
 
 define( '__ENV__', 'Prod' );
-define( '__DEBUG__', true  );
-define( '__DS__', DIRECTORY_SEPARATOR );
+define( '__DEBUG_ON__', true );
+define( '__ENV_PROD__', __ENV__ === 'Prod' );
 define( '__ROOT_DIR__', dirname( __DIR__ ) );
+define( '__DS__', DIRECTORY_SEPARATOR );
 
 include __ROOT_DIR__ . '/app/run.php';

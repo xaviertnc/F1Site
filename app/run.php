@@ -1,4 +1,4 @@
-<?php
+<?php defined( '__APP_START__' ) or die( 'Invalid Entry Point' );
 
 /**
  * app/run.php
@@ -32,6 +32,6 @@ include $app->servicesDir . '/auth.php';
 include $app->servicesDir . '/view.php';
 
 
-// $app->debug->dump( $app );
+// $debug->dump( $app );
 
 include $app->controller->getFile();
