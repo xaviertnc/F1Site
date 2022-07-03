@@ -1,4 +1,4 @@
-# F1 Micro Library Demo Site - Ver 1.8.1
+# F1 Micro Library Demo Site - Ver 1.8.2
 F1 controllers and views run within PHP's global variable scope.
   i.e. No unnecessary scope layers and limitations.  
 
