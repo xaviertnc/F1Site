@@ -13,8 +13,7 @@
 
 <body>
 
-<header class="row">
-<h1 id="logo">[F1 Demo Site Header]</h1>
-<?php include $view->getThemeFile( 'main-nav' ); ?>
-</header>
-
+  <header class="row">
+    <h1 id="logo">[F1 Demo Site Header]</h1>
+    <?php include $view->getThemeFile( 'main-nav' ); ?>
+  </header>

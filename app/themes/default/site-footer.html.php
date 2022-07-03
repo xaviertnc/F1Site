@@ -1,8 +1,8 @@
-<footer class="row">Site Footer &copy; <?=date('Y')?></footer>
+  <footer class="row">F1 Demo Site Footer &copy; <?=date('Y')?></footer>
 
-<script><?php include $view->getScriptFile(); ?></script>
+  <script><?php include $view->getScriptFile(); ?></script>
 
-<script src="<?=$app->jsUri . '/main.js'?>"></script>
+  <script src="<?=$app->jsUri . '/main.js'?>"></script>
 
 </body>
 

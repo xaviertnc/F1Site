@@ -4,13 +4,31 @@
  * ==    F1 Micro Framework       ==
  * ==     Front Controller        ==
  * ==   C. Moller - 19 Mar 2022   ==
- * ==  Last Update - 24 Jun 2022  ==
+ * ==  Last Update - 03 Jul 2022  ==
  ***********************************/
 
-define( '__ENV__', 'Prod' );
-define( '__DEBUG_ON__', true );
-define( '__ENV_PROD__', __ENV__ === 'Prod' );
-define( '__ROOT_DIR__', dirname( __DIR__ ) );
-define( '__DS__', DIRECTORY_SEPARATOR );
+// -----------------------------------------------------------------------
+// Fetch application environment, services and instance specific settings.
+// -----------------------------------------------------------------------
 
-include __ROOT_DIR__ . '/app/run.php';
+include '../app/config.php';
+
+
+// -----------------------------------------------------------------------
+// Load and configure application core services.
+// Each service gets it's own file to keep things tidy and easy to follow.
+// PS: Vendor libs are loaded (if required) in the respective service files.
+// NB: The order of includes is VERY important!
+// -----------------------------------------------------------------------
+
+include $app->servicesDir . '/debug.php';
+include $app->servicesDir . '/http.php';
+include $app->servicesDir . '/database.php';
+include $app->servicesDir . '/controller.php';
+include $app->servicesDir . '/auth.php';
+include $app->servicesDir . '/view.php';
+
+
+// $debug->dump( $app );
+
+include $app->controller->getFile();
