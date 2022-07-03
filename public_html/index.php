@@ -11,7 +11,7 @@
 // Fetch application environment, services and instance specific settings.
 // -----------------------------------------------------------------------
 
-include '../app/config.php';
+require '../config.php';
 
 
 // -----------------------------------------------------------------------

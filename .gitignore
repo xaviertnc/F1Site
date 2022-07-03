@@ -1,10 +1,9 @@
+config.php
 app/storage/*
 app/vendors/*
-app/config.php
-!app/storage/logs/.keep
-!app/vendors/.keep
-*sublime*
-*.log
-*.zip
 *_compiled.php
 *_manifest.php
+*sublime*
+!.keep
+*.log
+*.zip
