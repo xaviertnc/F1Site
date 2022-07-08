@@ -1,15 +1,39 @@
-<?php include $view->getThemeFile( 'site-header' ); ?>
+<include>head</include>
 
-  <header>
-    <h2>File Explorer Demo</h2>
-  </header>
+  <include>site-header</include>
 
-  <main class="row">
-    <p>Main content goes here</p>
+  <main class="page">
+
+    <include>page-header</include>
+
+    <div class="content">
+      <div class="folders">
+        <h3>Folders</h3>
+        <div class="tree">
+          <ul>
+            <li>
+              <details open>
+                <summary><?=basename($app->rootDir)?></summary>
+                <ul class="subtree">
+                  <?php foreach( $view->subdirs as $dir ): ?>
+                  <li><?=basename($dir)?></li>
+                  <?php endforeach; ?>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="files">
+        <h3>Files</h3>
+        <p>Main content goes here</p>
+      </div>
+    </div>
+
+    <include>page-footer</include>
+
   </main>
 
-  <footer>
-    <p>File Explorer Demo - Footer</p>
-  </footer>
+  <include>site-footer</include>
 
-<?php include $view->getThemeFile( 'site-footer' ); ?>
+<include>foot</include>

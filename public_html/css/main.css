@@ -1,31 +1,98 @@
 * { padding: 0; margin: 0; box-sizing: border-box; }
 
-header {
+body {
+  color: slategrey;
+}
+
+body > header {
   display: flex;
+  color: lavender;
+  background: darkslateblue;
   justify-content: space-between;
+  padding: 1rem;
+}
+
+main > header,
+main > footer,
+body > footer {
+  padding: 1rem;
 }
 
 nav {
-  background: black;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
   color: white;
+}
+
+main .content {
+  position: relative;
   display: flex;
 }
 
-nav ul {
+aside {
+  min-width: 280px;
+}
+
+.container {
+  max-width: 1024px;
+  margin: auto;
+}
+
+.row {
+  background: lightcyan;
+}
+
+.row:nth-child(even) {
+  background: paleturquoise;
+}
+
+.block {
+  background: azure;
+}
+
+.block:nth-child(even) {
+  background: whitesmoke;
+}
+
+.item {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.menu {
   list-style: none;
   display: flex;
-  flex: 1;
+  gap: 1rem;
 }
 
-nav li {
-  flex: 1;
-  padding: 0.5em;
+.menu li {
+  padding: 7px 0;
+  position: relative;
+  white-space: nowrap;
+  opacity: 0.8;
 }
 
-main {
-  /*padding: 1em;*/
-  /*border: 1px solid blue;*/
+.menu li:hover {
+  opacity: 1;
 }
 
-footer {
+.menu li::after {
+  content: " ";
+  background-color: slateblue;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 3px;
+  left: 0;
+}
+
+.menu .active::after,
+.menu li:hover::after {
+  background-color: yellow;
+}
+
+.menu a {
+  color: whitesmoke;
+  text-decoration: none;
 }

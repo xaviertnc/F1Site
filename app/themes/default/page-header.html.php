@@ -1,3 +1,3 @@
 <header>
-  <h2>[Page Header]</h2>
+  <h2><?=$view->title?></h2>
 </header>

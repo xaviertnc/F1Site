@@ -1,5 +1,4 @@
 /* View Specific CSS */
-article {
-	flex: 1;
+.calendar {
 	padding: 1rem;
 }

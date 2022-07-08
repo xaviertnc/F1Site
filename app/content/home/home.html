@@ -1,17 +1,20 @@
-<?php include $view->getThemeFile( 'site-header' ); ?>
+<?php include $view->getThemeFile( 'head' ); ?>
 
-  <?php include $view->getThemeFile( 'page-header' ); ?>
+  <?php include $view->getThemeFile( 'site-header' ); ?>
 
-  <main class="row">
-    <article class="block container">
-      <header class="row">Article Header 1</header>
-      <section class="row">Article Content</section>
-      <footer class="row">Article Footer</footer>
-    </article>
+  <main class="page">
+    <?php include $view->getThemeFile( 'page-header' ); ?>
+    <div class="content">
+      <article class="block">
+        <header class="row">Article Header</header>
+        <section class="row">Article Content</section>
+        <footer class="row">Article Footer</footer>
+      </article>
+      <?php include $view->getThemeFile( 'main-sidebar' ); ?>
+    </div>
+    <?php include $view->getThemeFile( 'page-footer'  ); ?>
   </main>
 
-  <?php include $view->getThemeFile( 'page-footer'  ); ?>
+  <?php include $view->getThemeFile( 'site-footer'  ); ?>
 
-  <?php include $view->getThemeFile( 'main-sidebar' ); ?>
-  
-<?php include $view->getThemeFile( 'site-footer'  ); ?>
+<?php include $view->getThemeFile( 'foot'  ); ?>
