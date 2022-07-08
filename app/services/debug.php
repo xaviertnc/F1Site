@@ -25,9 +25,18 @@ else
 $app->debugLogFile = $app->storageDir . DIRECTORY_SEPARATOR . 'logs' .
   DIRECTORY_SEPARATOR . date( Debug::$shortDateFormat ) . '.log';
 
-
 $debug = new Debug( $app->debugLevel, $app->debugLogFile );
 
 register_shutdown_function( [ $debug, 'onShutdown' ] );
+
+
+//------------------------------------------------------------
+// Utility functions to allow quick and easy debugging inside
+// 3rd party classes or any other isolated scope code blocks.
+//------------------------------------------------------------
+
+function debug_log( $str ) { global $debug; $debug->log( $str ); }
+function debug_dump( $var, $title = '' ) { global $debug; $debug->dump( $var, $title ); }
+
 
 $app->debug = $debug;

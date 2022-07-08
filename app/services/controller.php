@@ -16,7 +16,7 @@ include $app->vendorsDir . '/f1/controller/controller.php';
 use F1\Controller;
 
 $app->controller = new Controller( [
-  'baseDir'  => $app->contentDir,
+  'controllersBaseDir' => $app->contentDir,
   'filePath' => $http->req->path ?: $app->homePage,
   'name'     => $http->req->path ? end( $http->req->segments ) : $app->homePage
 ] );
