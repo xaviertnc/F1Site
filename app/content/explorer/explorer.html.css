@@ -1,22 +1,22 @@
 /* Page specific styles */
 
 main .content {
-	padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 h3 {
-	background-color: #55555522;
-	padding: 0.3rem;
+  background-color: #55555522;
+  padding: 0.3rem;
 }
 
 .folders {
-	width: 280px;
-	background-color: yellow;
-	padding: 0.3rem;
-	overflow: auto;
+  width: 280px;
+  background-color: yellow;
+  padding: 0.3rem;
+  overflow: auto;
 }
 
 .files {
-	flex:  1;
-	padding: 0.3rem;
+  flex:  1;
+  padding: 0.3rem;
 }

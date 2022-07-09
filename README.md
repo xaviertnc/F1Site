@@ -1,20 +1,20 @@
-# F1 Micro Library Demo Site - Ver 1.8.2
-F1 controllers and views run within PHP's global variable scope.
-  i.e. No unnecessary scope layers and limitations.  
+# F1 Lib Demo - Ver 1.12.0
+An example implementation / framework using F1 Lib modules as services. 
 
-F1 uses PHP objects to limit global variable over-crowding and conflicts.  
+## About the F1 Lib framework 
+F1 controllers and views run within PHP's global variable scope with
+a single (or a very limited number) of global objects to control
+global namespace over-crowding and conflicts.  
 
-
-## Main Global Object
+### Main Global Object
  - $app
 
-## Aux (optional) Globals
+### Optional Aux Globals ( For convenience and code readability)
  - $debug 
  - $auth
  - $http
  - $view
  - $db
-
 
 The $app object serves as top-level data container and namespace.
 

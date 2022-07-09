@@ -1,0 +1,45 @@
+<include>doc-head</include>
+
+  <include>site-header</include>
+
+  <main class="page">
+
+    <include>page-header</include>
+
+    <div class="content">
+      <div class="calendar">
+        <table>
+          <thead>
+            <tr>
+              <th>Hour</th>
+              <th>Min</th>
+              <?php foreach( $data->stations as $station ): ?>
+              <th style="background:<?=$station->colour?>"><?=$station->id?><br><?=$station->name?></th>
+              <?php endforeach; ?>
+            </tr> 
+          </thead>
+          <tbody>
+            <?php foreach( $cal->open_hours as $hour ): foreach( $cal->slots_per_hour as $i => $min ): ?>
+            <tr>
+              <?php if(!$i): ?>
+              <th rowspan="4"><?=$hour?></th>
+              <?php endif; ?>
+              <th><?=$min?></th>
+              <?php foreach( $data->stations as $station ): ?>
+              <td id="<?=$station->id?>-<?=$hour?>-<?=$min?>"></td>
+              <?php endforeach; ?>
+            </tr>
+            <?php endforeach; ?>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <include>page-footer</include>
+
+  </main>
+
+  <include>site-footer</include>
+
+<include>doc-foot</include>
