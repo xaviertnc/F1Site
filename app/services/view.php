@@ -5,13 +5,11 @@ include $app->vendorsDir . '/f1/view/view.php';
 /**
  * app/services/view.php
  * 
- * A custom implementation and instantiation of F1\View.
+ * F1 View service implementation - 01 Jul 2022
  *
  * @author C. Moller <xavier.tnc@gmail.com>
  * 
- * Date: 01 July 2022
- * 
- * Last update: 01 July 2022
+ * @version 1.4.0 - 09 Jul 2022
  * 
  */
 
@@ -19,7 +17,7 @@ use F1\View;
 
 $view = new View( [
   'name'      => $app->controller->name,
-  'fileDir'   => $app->controller->fileDir, 
+  'viewDir'   => $app->controller->controllerDir, 
   'themesDir' => $app->themesDir
 ] );
 
