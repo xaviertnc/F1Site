@@ -2,20 +2,34 @@
 
   <include>site-header</include>
 
-  <main class="page">
+  <main>
 
     <include>page-header</include>
 
-    <div class="content">
-      <div class="builder">
-        Builder content goes here...
+    <div id="builder">
+
+      <div id="blocks-column" class="column">
+
+        <h3>Block Menu</h3>
+
+        <div id="blocks" class="drag">
+          <div class="bb-row builder-block">Row</div>
+          <div class="bb-col builder-block">Column</div>
+          <div class="bb-gen builder-block">Block</div>
+        </div>
+
       </div>
+
+      <div id="content-column" class="column">
+
+        <h3>Content</h3>
+
+        <div id="content" class="drop"></div>
+
+      </div>
+
     </div>
 
-    <include>page-footer</include>
-
   </main>
-
-  <include>site-footer</include>
 
 <include>doc-foot</include>

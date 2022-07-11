@@ -1,0 +1,62 @@
+/* Page Specific CSS */
+
+body > main {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - 5.5rem);
+}
+
+h3 {
+	background: grey;
+	color: white;
+	padding: 5px;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;	
+}
+
+#builder {
+	padding: 0 1rem;
+	display: flex;
+	width: 100%;
+	flex: 1;
+}
+
+#blocks-column {
+	min-width: 280px;
+	background: dimgrey;
+	padding: 0.5rem 0 0.5rem 0.5rem;
+	flex: 1;
+}
+
+#content-column {
+	background: dimgrey;
+	padding: 0.5rem;
+	flex: 3;
+}
+
+#blocks {
+	display: flex;
+	background: white;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 1rem;
+	width: 100%;
+	flex: 1;		
+	gap: 1rem;
+}
+
+.builder-block {
+	background: #555;
+	color: white;
+	padding: 1rem;
+	height: fit-content;
+}
+
+#content {
+	background: white;
+	min-height: 2rem;
+	padding: 1rem;
+}
