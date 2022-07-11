@@ -4,9 +4,5 @@
     <li><a href="<?=$link?>"><?=$title?></a></li>
     <?php endforeach; ?>
   </ul>
-  <script>
-    F1.deferred.push(function initMainMenu() { document.querySelectorAll('.menu a').forEach(
-      function(el) { if (el.getAttribute('href') === F1.page) el.parentElement.classList.add('active'); });
-    });
-  </script>
+  <script src="js/menu.js" deferred></script>
 </nav>
