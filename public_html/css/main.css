@@ -1,7 +1,8 @@
 * { padding: 0; margin: 0; box-sizing: border-box; }
 
-body {
+html {
   color: slategrey;
+  overflow-y: scroll;
 }
 
 body > header {
@@ -9,6 +10,8 @@ body > header {
   color: lavender;
   background: darkslateblue;
   justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
   padding: 1rem;
 }
 
