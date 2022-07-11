@@ -1,0 +1,124 @@
+<include>doc-head</include>
+
+  <include>site-header</include>
+
+  <main>
+
+    <include>page-header</include>
+
+    <form class="card" method="POST" enctype="multipart/form-data" novalidate>
+      <div class="status-bar top">
+        <span class="show-if-unhappy">* Unhappy *</span>
+        <span class="show-if-modified">* Modified *</span>
+      </div>
+      <div id="title" class="field" data-validate="title:2:10|not:fok*">
+        <label>Title</label>
+        <input class="input" name="form[title]" value="" aria-label="Title">
+      </div>
+      <div id="fullname" class="field fullname required" data-type="FullName"
+        aria-label="Full Name" data-validate="fullname">
+        <fieldset >
+          <legend>Full Name</legend>
+          <div class="input-container">
+            <label>First Name</label>
+            <input class="input" name="form[firstname]" aria-label="First Name" value="" required></label>
+          </div>
+          <div class="input-container">
+            <label>Last Name</label>
+            <input class="input" name="form[lastname]" aria-label="Last Name" value="Moller" required>
+          </div>
+        </fieldset>
+      </div>
+      <div id="email" class="field required" data-type="Email" data-validate="unique:verify.php">
+        <label>Email Address</label>
+        <input class="input w100" type="email" name="form[email]" aria-label="Email Address" value="" required>
+      </div>
+      <div id="file" class="field" data-type="SingleUpload" data-api="upload.php"
+        data-validate="maxsize:2M|types:jpg,png,gif,pdf">
+        <label>Upload File</label>
+        <input class="input w100" type="file" name="form[file]" aria-label="Upload File" value="">
+      </div>
+      <div class="field datepicker required" data-type="DatePicker" data-validate="date">
+        <label>Event Date</label>
+        <div class="form-control">
+          <input class="input" name="form[eventdate]" aria-label="Event Date" value="" required>
+          <button type="button" class="toggle">CAL</button>
+        </div>
+      </div>
+      <section>
+        <div id="question1" class="field col" data-type="RadioList" required>
+          <label>Question 1</label>
+          <div class="input-group">
+            <label>
+              <input class="input" type="radio" name="form[q1]" value="A">
+              Option A
+            </label>
+            <label>
+              <input class="input" type="radio" name="form[q1]" value="B" checked>
+              Option Beta
+            </label>
+            <label>
+              <input class="input" type="radio" name="form[q1]" value="C">
+              Option Charlie
+            </label>
+          </div>
+        </div>
+        <div id="question2" class="field col" data-type="CheckList" required>
+          <label>Question 2</label>
+          <div class="input-group">
+            <label>
+              <input class="input" type="checkbox" name="form[q2]" value="1">
+              Option 1
+            </label>
+            <label>
+              <input class="input" type="checkbox" name="form[q2]" value="2" checked>
+              Option 2
+            </label>
+            <label>
+              <input class="input" type="checkbox" name="form[q2]" value="3" checked>
+              Option 3
+            </label>
+          </div>
+        </div>
+      </section>
+      <div id="color" class="field required">
+        <label>Favourite Colour</label>
+        <select class="input" name="form[color]" aria-label="Favourite Colour"
+          value="" required>
+          <option></option>
+          <option>Red</option>
+          <option>Blue</option>
+          <option>Green</option>
+          <option>Yellow</option>
+          <option>White</option>
+          <option>Black</option>
+        </select>
+      </div>
+      <div id="notes" class="field required" data-type="Memo">
+        <label>Notes</label>
+        <textarea class="input w100" name="form[notes]" aria-label="Notes"
+          placeholder="Enter text here..." required></textarea>
+      </div>
+      <div id="terms" class="field required">
+        <label>
+          <input class="input" type="checkbox" name="form[terms]"
+            aria-label="Accept Terms" value="I Agree.">
+          I accept <a href="">terms & conditions</a>
+        </label>
+      </div>
+      <div class="status-bar bottom">
+        <span class="show-if-unhappy">* Unhappy *</span>
+        <span class="show-if-modified">* Modified *</span>
+      </div>
+      <div class="action-bar">
+        <button type="submit" onclick="F1.contactForm.submit(event)">Submit</button>
+        <button type="button" onclick="F1.contactForm.init(Happy.form1DataOther)">Initialize with new data</button>
+        <button type="button" onclick="F1.contactForm.clear()">Clear</button>
+        <button type="button" onclick="F1.contactForm.reset()">Reset</button>
+      </div>
+    </form>
+  </main>
+  
+  <footer><small>&copy; 2021 - C. Moller &lt;xavier.tnc@gmail.com&gt;</small></footer>
+
+<include>doc-foot</include>

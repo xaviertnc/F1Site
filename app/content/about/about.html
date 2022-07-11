@@ -1,0 +1,42 @@
+<include>doc-head</include>
+
+  <include>site-header</include>
+
+  <main class="page">
+
+    <include>page-header</include>
+
+    <article>
+      <h3>F1 Form API</h3>
+      <br>
+      <pre>f1.form.validate('#my-form', options);</pre>
+      <pre>e.g. elMyForm.onsubmit = (event) => f1.form.validate(event.target, options);</pre>
+      <pre>e.g. elMyInput.onblur = (event) => f1.form.validate(event.target, options);</pre>
+      <pre>f1.form.validations.add( 'required', testFn(el, args, errormessage ){} );</pre>
+      <pre>f1.form.fieldTypes.add( 'email', {
+        selector: '.field',
+        getInputs: fn(){},
+        getValue: fn(){},
+        setValue: fn(){},
+        getLabel: fn(){},
+        getTabIndex: fn(){},
+        validate: fn(){},
+        showErrors: fn(el, errors){},
+        removeErrors: fn(el){},
+        create: fn(){}
+      } )
+      </pre>
+      <pre>f1.form.fields.add( elm, type )</pre>
+      <pre>f1.form.fields.constructSelector().. put inside fields.get()!</pre>
+      <pre>f1.form.fields.sort()... by tabIndex</pre>
+      <pre>f1.form.fields.get()</pre>
+
+    </article>
+
+    <include>page-footer</include>
+
+  </main>
+
+  <include>site-footer</include>
+
+<include>doc-foot</include>
