@@ -1,18 +1,109 @@
 /* View Specific CSS */
+.content {
+  border: 7px solid gainsboro;
+}
+
 .calendar {
-  padding: 1rem;
+  --row--height: 23px;
+  --station--col--width: 100px;
+  --divider--color: gainsboro;
+  --grid--color: silver;
+  --cell--color: white;
+  overflow: auto;
+  height: 56vh;
+  flex: 1;
 }
 
-.calendar table {
-  border-collapse: collapse;
+.table {
+  display: flex;
+  background-color: var(--grid--color);
+  flex-direction: column;
 }
 
-.calendar thead th {
+.thead {
+  display: flex;
+  background-color: var(--grid--color);
+  border-bottom: 2px solid var(--divider--color);
+  width: fit-content;
+  position: sticky;
   color: black;
-  width: 100px;
-  min-width: 100px;
+  z-index: 5;
+  top: 0;
 }
 
-.calendar th, .calendar td {
-  border: 1px solid;
+.trhead {
+  display: flex;
+  position: sticky;
+  border-right: 2px solid var(--divider--color);
+  background-color: var(--grid--color);
+  flex-direction: column;
+  gap: 1px;
+  left: 0;
+}
+
+.tbody {
+  display: flex;
+  background-color: var(--grid--color);
+  width: fit-content;
+}
+
+.tmain {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.tr {
+  display: flex;
+  flex-direction: row;
+}
+
+.th {
+  flex: none;
+  display: flex;
+  white-space: nowrap;
+  flex-direction: column;
+  background-color: var(--cell--color);
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+}
+
+.th + .th,
+.td + .td {
+  border-left: 1px solid var(--grid--color);
+}
+
+.trhead .min-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.trhead .hour-col, 
+.trhead .min-col, 
+.tmain .td {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cell--color);
+  justify-content: center;
+  align-items: center;
+}
+
+.hour-col, .min-col {
+  width: 50px;
+}
+
+.station {
+  width: var(--station--col--width);
+}
+
+.min-group .td {
+  height: var(--row--height);
+}
+
+.tmain .td {
+  width: var(--station--col--width);
+  height: var(--row--height);
 }

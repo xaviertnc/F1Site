@@ -3,11 +3,11 @@
 /**
  * ./app/content/salon/salon.php
  * 
- * Salon page controller
+ * Salon page controller - 08 Jul 2022
  *
- * C. Moller <xavier.tnc@gmail.com>
+ * @author C. Moller <xavier.tnc@gmail.com>
  * 
- * Date: 08 Jul 2022
+ * @version 2.0.0 - 14 Jul 2022
  * 
  */
 
@@ -33,7 +33,7 @@ $data->stations[] = new Station( 6 , 'STATION' , null, 'green'     );
 $data->stations[] = new Station( 7 , 'TAN CAN' , null, 'orange'    );
 $data->stations[] = new Station( 8 , 'CAFÉ'    , null, 'orangered' );
 $data->stations[] = new Station( 9 , 'STATION' , null, 'deeppink'  );
-$data->stations[] = new Station( 10, 'STATION' , null, 'grey'      );
+$data->stations[] = new Station( 10, 'STATION' , null, 'whitesmoke');
 
 $data->treatments = [];
 $data->treatments[] = new Treatment( 'Laser Hair Removal Lip'      , 1, 15, 260, 'ea' );
@@ -53,8 +53,8 @@ $data->appointments = [];
 $data->appointments[] = new Appointment( 1, 1, 1, 2, 260, '2022-07-11', 8, 30, 15, 1 );
 
 $cal = new stdClass();
-$cal->open_hours = [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ];
-$cal->slots_per_hour = [ 0, 15, 30, 45 ];
+$cal->open_hours = [ '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+$cal->slots_per_hour = [ '00', '15', '30', '45' ];
 $cal->timeslots = [];
 for ( $i = 0; $i < count( $data->stations ); $i++ )
   for ( $j = 0; $j < count( $cal->open_hours ); $j++ )
