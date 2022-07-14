@@ -14,7 +14,9 @@
 include __DIR__ . '/salon.model.php';
 
 
-$view->title = 'Salon Calendar - ' . date('d M Y');
+$view->title = date('d M Y');
+
+$view->theme = 'salon';
 
 $data = new stdClass();
 
@@ -65,4 +67,4 @@ for ( $i = 0; $i < count( $data->stations ); $i++ )
       $cal->timeslots[ $slot_id ] = $slot;
     }
 
-include $view->getFile( '.static.html' );
+include $view->getFile();
