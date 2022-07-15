@@ -4,7 +4,23 @@
 
   <main class="page">
 
-    <include>page-header</include>
+    <header>
+      <div class="left-side">
+        <a href="salon?today=<?=$prevday?>" class="button">&lt;</a>
+        <h2><?=$view->title?></h2>
+        <a href="salon?today=<?=$nextday?>" class="button">&gt;</a>
+        <button class="button" type="button" onclick="F1.addAppointment()">
+          <i>+</i> Appointment
+        </button>
+      </div>
+      <div class="right-side">
+        <select name="view">
+          <option>Overview</option>
+          <option selected>Day View</option>
+          <option>Schedule View</option>
+        </select>
+      </div>
+    </header>
 
     <div class="content">
 
@@ -76,7 +92,7 @@
       </div>
     </div>
 
-    <include>page-footer</include>
+    <footer>-- Page Footer --</footer>
 
   </main>
 

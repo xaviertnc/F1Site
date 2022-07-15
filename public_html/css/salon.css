@@ -21,6 +21,16 @@ body > footer {
   padding: 1rem;
 }
 
+main > header {
+  display: flex;
+  justify-content: space-between;
+}
+
+main > header .left-side {
+  display: flex;
+  gap: 7px;  
+}
+
 nav {
   display: flex;
   align-items: center;

@@ -107,3 +107,21 @@
   width: var(--station--col--width);
   height: var(--row--height);
 }
+
+.button {
+  color: grey;
+  padding: 3px 10px;
+  text-decoration: none;
+  background-color: gainsboro;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.button:visited, .button:focus {
+  color: grey;
+}
+
+.button:hover {
+  color: dodgerblue;
+  opacity: 0.8;
+}

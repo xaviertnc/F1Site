@@ -1,1 +1,1 @@
-<footer>Site Footer &copy; <?=date('Y')?></footer>
+<footer>Salon Allure &copy; <?=date('Y')?></footer>
