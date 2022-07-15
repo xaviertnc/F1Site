@@ -13,7 +13,8 @@
 
 $view->title = 'Contact Us';
 
-$view->useStyleFile( 'form.css' );
 $view->useScriptFile( 'form.js' );
+$view->useScriptFile( 'form.extend.js' );
+$view->useStyleFile( 'form.css' );
 
 include $view->getFile();

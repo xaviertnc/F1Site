@@ -103,15 +103,6 @@ fieldset {
 .action-bar {
   margin-top: 1rem;
 }
-.messages.summary {
-  color: darkred;
-  background-color: pink;
-  font-style: italic;
-  font-size: 0.9rem;
-  line-height: 1.25rem;
-  margin: 1rem 0;
-  padding: 0.5rem 1rem;
-}
 .unhappy .show-if-unhappy {
   display: inline-block;
   background-color: var(--error-color);
@@ -134,6 +125,12 @@ fieldset {
 .field.unhappy fieldset {
   border-color: var(--error-color);
 }
+.error {
+  padding-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .errors {
   color: var(--error-color);
   height: 1.15em;
@@ -143,11 +140,15 @@ fieldset {
   margin-bottom: 0.5em;
   overflow: hidden;
 }
-.error {
-  padding-top: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.errors.summary {
+  color: darkred;
+  background-color: pink;
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  height: auto;
 }
 
 

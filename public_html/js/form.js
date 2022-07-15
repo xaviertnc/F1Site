@@ -17,7 +17,6 @@ function extend( obj, props ) {
 
 
 function clearErrors( frmObj, errorsSelector ) {
-  console.log( 'Clear Errors:', frmObj );
   frmObj.errors = [];
   frmObj.elm.classList.remove( frmObj.unhappyClass );
   errorsSelector = errorsSelector || '.' + frmObj.errorsClass.replace( ' ', '.' );
@@ -31,10 +30,9 @@ const Form = function( options )
   const defaults = {
     selector: 'form',
     fieldSelector: '.field',
+    summaryClass: 'summary',
     unhappyClass: 'unhappy',
     errorsClass: 'errors',
-    fieldTypes: {},
-    validators: {},
     fields: []
   };
   extend ( this, defaults );
@@ -46,9 +44,13 @@ const Form = function( options )
 };
 
 
-Form.Error = function( elField, message )
+Form.FieldTypes = {};
+Form.Validators = {};
+
+
+Form.Error = function( field, message )
 {
-  this.elField = elField;
+  this.field = field;
   this.message = message;
 }
 
@@ -76,11 +78,14 @@ Form.FieldType.prototype = {
   },
 
   getName: function() { return this.input.name; },
-  getValue: function() { return this.input.value; },
+  getValue: function() { return this.input.type === 'checkbox'
+    ? ( this.input.checked ? this.input.value : '' ) : this.input.value; },
+  setValue: function( val ) { this.input.type === 'checkbox' ? this.input.checked = ( 
+    this.input.value === val ) : this.input.value = val || ''; },
   getRequired: function() { return this.elm.classList.contains( 'required' ); },
-  setValue: function( val ) { this.input.value = val; },
   clearErrors: function() { clearErrors( this ) },
   clear: function() { this.setValue( '' ); },
+  focus: function() { this.input.focus(); },
 
   showErrors: function() {
     if ( !this.errors.length ) return;
@@ -92,9 +97,9 @@ Form.FieldType.prototype = {
   },
 
   validate: function( options ) {
-    const validator = this.form.validators.Required;
+    const validator = Form.Validators.Required;
     const valid = validator.test( this, options );
-    if ( ! valid ) this.errors.push( new Error( this.elm,
+    if ( ! valid ) this.errors.push( new Form.Error( this,
       validator.getInvalidMessage( this, options ) ) );
     return valid;
   },
@@ -113,7 +118,7 @@ Form.Field = function( form, elm )
   this.errorsClass = form.errorsClass;
   this.unhappyClass = form.unhappyClass;
   const fieldTypeId = elm.getAttribute( 'data-type' );
-  const fieldType = form.fieldTypes[ fieldTypeId ];
+  const fieldType = Form.FieldTypes[ fieldTypeId ];
   extend( this, fieldType || new Form.FieldType( 'Text' ) );
   this.getInputs();
   this.input = this.inputs[0];
@@ -156,32 +161,32 @@ Form.prototype = {
     this.fields.forEach( field => { field.showErrors(); 
       if ( field.errors[0] ) errors.push( field.errors[0] ); } );
     const elMsgs = document.createElement( 'div' );
-    elMsgs.className = this.errorsClass + ' summary';
+    elMsgs.className = this.errorsClass + ' ' + this.summaryClass;
     elMsgs.innerHTML = errors.map( e => '<div class="error">'+e.message+'</div>' ).join('');
     this.elm.appendChild( elMsgs );
   },
 
-  clearErrors: function() { clearErrors( this, '.summary' );
+  clearErrors: function() { clearErrors( this, '.' + this.summaryClass );
     this.fields.forEach( field => field.clearErrors() ); },
 
-  validate: function( options ) { this.fields.forEach( field => 
-    { field.clearErrors(); field.validate( options ) } ); },
+  validate: function( options ) {  this.clearErrors();
+    this.fields.forEach( field => field.validate( options ) ); },
 
-  focus: function() { this.elm.focus(); },
+  focus: function() { this.fields[0].focus(); },
 
-  focusError: function( focusLast ) {
-    const errors = this.getErrors();
-    if ( errors.length > 0 ) {
-      const errIndex = focusLast ? errors.length : 0;
-      errors[ errIndex ].elField.focus(); }
+  focusOnError: function( error ) { error.field.focus(); },
+
+  clear: function() { this.clearErrors(); this.fields.forEach( field => field.clear() ); },
+
+  reset: function() { this.clearErrors(); this.elm.reset(); },
+
+  init: function( initialValues, nameSpace ) { this.clear();
+    this.fields.forEach( f => { const fname = f.getName();
+      const fid = nameSpace ? fname.replace( `${nameSpace}[`, '' )
+        .replace( ']', '' ) : fname;
+      if ( initialValues[ fid ] ) f.setValue( initialValues[ fid ] );
+    } );
   },
-
-  clear: function() { this.clearErrors();
-    this.fields.forEach( field => field.clear() ); },
-
-  reset: function() { return this.elm.reset(); },
-
-  init: function() {},
 
 };
 

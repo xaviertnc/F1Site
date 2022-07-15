@@ -1,4 +1,4 @@
-# F1 Lib Demo - Ver 1.15.6
+# F1 Lib Demo - Ver 1.16.0
 An example implementation / framework using F1 Lib modules as services. 
 
 ## About the F1 Lib framework 
