@@ -1,18 +1,6 @@
-label {
-  display: block;
-  padding-bottom: 0.1em;
-  padding-right: 10px;
-}
-label, legend {
-  font-size: 0.96em;
-}
-button {
-  margin: 0.167em 1px;
-  padding: 2px 1em;
-}
 form {
-  max-width: 580px;
   min-width: 297px;
+  --text-color:  #222;
   --error-color: crimson;
   --error-color-dark: #c81234;
   --modified-color: cadetblue;
@@ -21,10 +9,24 @@ form {
   padding: 1em 1em 1em;
   color: #222;
 }
-footer {
+form label {
+  display: block;
+  padding-bottom: 0.1em;
+  padding-right: 10px;
+}
+form label, legend {
+  font-size: 0.8em;
+}
+/*button {
+  cursor: pointer;
+  margin: 0.167em 1px;
+  padding: 2px 1em;
+}
+*/
+form footer {
   padding: 0.5rem 1rem;
 }
-fieldset {
+form fieldset {
   padding: 0.5rem 1rem;  
 }
 .fullname label
@@ -133,10 +135,10 @@ fieldset {
 }
 .errors {
   color: var(--error-color);
-  height: 1.15em;
   font-size: 0.8em;
   font-style: italic;
   line-height: 1em;
+  margin-top: 0.3em;
   margin-bottom: 0.5em;
   overflow: hidden;
 }

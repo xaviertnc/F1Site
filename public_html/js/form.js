@@ -54,6 +54,8 @@ Form.Error = function( field, message )
   this.message = message;
 }
 
+Form.Error.prototype.focus = function() { this.field.focus(); }
+
 
 Form.FieldType = function( id, options )
 {
@@ -70,10 +72,8 @@ Form.FieldType.prototype = {
   },
 
   getLabel: function() { let label = this.elm.getAttribute( 'aria-label' );
-    if ( ! label && this.input ) { label = this.input.getAttribute( 'aria-label' ); }
-    else { const elLbl = this.elm.querySelector( 'label' );
-      if ( ! label && elLbl ) { label = elLbl.innerHTML; } 
-      else if ( ! label ) { label = this.getName(); } }
+    if ( ! label ) { const elLbl = this.elm.querySelector( 'label' );
+      if ( elLbl ) { label = elLbl.innerHTML; } else label = this.getName(); }
     return label || 'Field';
   },
 
@@ -85,7 +85,8 @@ Form.FieldType.prototype = {
   getRequired: function() { return this.elm.classList.contains( 'required' ); },
   clearErrors: function() { clearErrors( this ) },
   clear: function() { this.setValue( '' ); },
-  focus: function() { this.input.focus(); },
+  reset: function() { this.setValue( this.initialValue || '' ); },
+  focus: function() { this.input ? this.input.focus() : null; },
 
   showErrors: function() {
     if ( !this.errors.length ) return;
@@ -104,7 +105,7 @@ Form.FieldType.prototype = {
     return valid;
   },
 
-  inputSelector: 'input:not([type="submit"],[type="hidden"]),textarea,select'
+  inputSelector: 'input,textarea,select'
 
 };
 
@@ -112,16 +113,18 @@ Form.FieldType.prototype = {
 Form.Field = function( form, elm )
 {
   this.elm = elm;
+  this.type = '';
   this.form = form;
   this.inputs = [];
   this.errors = [];
+  this.initialValue = '';
+  this.inputSelector = 'input';
   this.errorsClass = form.errorsClass;
   this.unhappyClass = form.unhappyClass;
   const fieldTypeId = elm.getAttribute( 'data-type' );
   const fieldType = Form.FieldTypes[ fieldTypeId ];
   extend( this, fieldType || new Form.FieldType( 'Text' ) );
-  this.getInputs();
-  this.input = this.inputs[0];
+  this.getInputs(); this.input = this.inputs[0];
 };
 
 
@@ -173,18 +176,15 @@ Form.prototype = {
     this.fields.forEach( field => field.validate( options ) ); },
 
   focus: function() { this.fields[0].focus(); },
-
-  focusOnError: function( error ) { error.field.focus(); },
-
   clear: function() { this.clearErrors(); this.fields.forEach( field => field.clear() ); },
-
-  reset: function() { this.clearErrors(); this.elm.reset(); },
+  reset: function() { this.clearErrors(); this.fields.forEach( field => field.reset() ); },
 
   init: function( initialValues, nameSpace ) { this.clear();
     this.fields.forEach( f => { const fname = f.getName();
       const fid = nameSpace ? fname.replace( `${nameSpace}[`, '' )
         .replace( ']', '' ) : fname;
-      if ( initialValues[ fid ] ) f.setValue( initialValues[ fid ] );
+      if ( initialValues[ fid ] ) { f.setValue( initialValues[ fid ] ); }
+      f.initialValue = f.getValue();
     } );
   },
 
