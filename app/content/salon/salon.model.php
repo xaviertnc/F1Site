@@ -1,95 +1,7 @@
 <?php //salon.model.php
 
-$last_id = 0;
-
-function get_id()
-{
-  global $last_id;
-  return $last_id++;
-}
-
-
-class Client {
-
-  public function __construct( $name, $cell, $email = 'none' )
-  {
-    $this->id = get_id();
-    $this->name = $name;
-    $this->cell = $cell;
-    $this->email = $email;
-    $this->lastAppointment = null;
-  }
-
-}
-
-
-class Station {
-
-  public function __construct( $no, $name, $therapist_id, $colour )
-  {
-    $this->id = $no;
-    $this->name = $name;
-    $this->therapist_id = $therapist_id;
-    $this->colour = $colour;
-  }
-
-}
-
-
-class Treatment {
-
-  public function __construct( $name, $station_no, $duration, $price, $units )
-  {
-    $this->id = get_id();
-    $this->name = $name;
-    $this->station_no = $station_no;
-    $this->duration = $duration;
-    $this->price = $price;
-    $this->units = $units;
-  }
-
-}
-
-
-class Therapist {
-
-  public function __construct( $name, $cell, $station_no )
-  {
-    $this->id = get_id();
-    $this->name = $name;
-    $this->cell = $cell;
-    $this->station_no = $station_no;
-  }
-
-}
-
-
-class Appointment {
-  public function __construct( $client_id, $treatment_id, $station_id,
-    $therapist_id, $est_amount, $date, $start_hour, $start_min, 
-    $duration, $status_id )
-  {
-    $this->id = get_id();
-    $this->client_id = $client_id;
-    $this->treatment_id = $treatment_id;
-    $this->station_id = $station_id;
-    $this->therapist_id = $therapist_id;
-    $this->est_amount = $est_amount;
-    $this->date = $date;
-    $this->start_hour = $start_hour;
-    $this->start_min = $start_min;
-    $this->duration = $duration;
-    $this->status_id = $status_id;
-  }
-
-}
-
 
 class TimeSlot {
-
-  public $station;
-  public $hour;
-  public $min;
 
   public function __construct( $station, $hour, $min )
   {
@@ -98,4 +10,56 @@ class TimeSlot {
     $this->min = $min;
   }
 
+}
+
+
+class Model {
+
+  private $db;
+
+  public function __construct( $db ) {
+    $this->db = $db;
+    $this->settings = $this->getSettings();
+    $this->stations = $this->getStations();
+    $this->clients = $this->getClients();
+    $this->treatments = $this->getTreatments();
+    $this->therapists = $this->getTherapists();
+    $this->open_hours = explode( ',', $this->settings->open_hours );
+    $this->slots_per_hour = explode( ',', $this->settings->slots_per_hour );
+    $this->timeslots = $this->getTimeSlots();
+  }
+
+  public function getSettings() {
+    return $this->db->query('settings')->getFirst();
+  }
+
+  public function getStations() {
+    return $this->db->query('stations')->getAll();
+  }
+
+  public function getClients() {
+    return $this->db->query('clients')->getAll();
+  }
+
+  public function getTreatments() {
+    return $this->db->query('treatments')->getAll();
+  }
+
+  public function getTherapists() {
+    return $this->db->query('therapists')->getAll();
+  }
+
+  public function getTimeSlots() {
+    $timeslots = [];
+    foreach ( $this->stations as $station )
+      for ( $j = 0; $j < count( $this->open_hours ); $j++ )
+        for ( $k = 0; $k < count ( $this->slots_per_hour ); $k++ )
+        {
+          $slot_id = "{$station->id}:$j:$k";
+          $slot = new TimeSlot( $station->no, $j, $k );
+          $timeslots[ $slot_id ] = $slot;
+        }
+    return $timeslots;
+  }
+  
 }

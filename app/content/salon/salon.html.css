@@ -9,8 +9,8 @@
   --divider--color: gainsboro;
   --grid--color: silver;
   --cell--color: white;
-  overflow: auto;
-  height: 56vh;
+  /*overflow: auto;*/
+  /*height: 56vh;*/
   flex: 1;
 }
 
@@ -110,11 +110,18 @@
 
 .button {
   color: grey;
-  padding: 3px 10px;
+  padding: 0 0.8rem;
+  display: flex;
   text-decoration: none;
-  background-color: gainsboro;
+  justify-content: center;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 4px;
+  align-items: center;
+  min-height: 1.8rem;
+  margin: 0;
+  border-width: 1px;
+  border-color: #eee;
+  border-style: outset;
 }
 
 .button:visited, .button:focus {
@@ -124,4 +131,64 @@
 .button:hover {
   color: dodgerblue;
   opacity: 0.8;
+}
+
+.button.icon {
+  width: 2em;
+  height: 1.67em;
+  background-color: #eee;
+  padding: 0;
+}
+
+.button.icon img {
+  width: 80%;
+  height: 67%;
+}
+
+.modal form {
+  width: 100%;
+}
+
+.modal header {
+  padding: 1em;
+  background-color: gold;
+}
+
+.modal main {
+  padding: 1em;
+}
+
+.modal footer {
+  padding: 1em;
+}
+
+.today {
+  color: #222;
+  min-height: 1.67em;
+  display: flex;
+  align-items: center;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 0 1em;
+}
+
+.add {
+  margin-left: 1rem;
+  padding: 0 0.67em;  
+}
+
+#calendar {
+  border: 1px solid gainsboro;
+  display: block;
+  margin-bottom: 5px;
+  background: white;
+  padding: 1rem;
+}
+
+.select--option small {
+  color: grey;
+}
+
+.select--option.focus small {
+  color: white;
 }

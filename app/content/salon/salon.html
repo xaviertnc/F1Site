@@ -6,10 +6,10 @@
 
     <header>
       <div class="left-side">
-        <a href="salon?today=<?=$prevday?>" class="button">&lt;</a>
-        <h2><?=$view->title?></h2>
-        <a href="salon?today=<?=$nextday?>" class="button">&gt;</a>
-        <button class="button" type="button" onclick="F1.addAppointment()">
+        <a href="salon?today=<?=$prevday?>" class="button icon"><img src="img/caret-left.svg"></a>
+        <span class="today"><?=date( 'd M Y', $datetime )?></span>
+        <a href="salon?today=<?=$nextday?>" class="button icon"><img src="img/caret-right.svg"></a>
+        <button class="button add" type="button" onclick="F1.addAppointment()">
           <i>+</i> Appointment
         </button>
       </div>
@@ -45,9 +45,9 @@
           <!-- Table Head Row -->
           <div class="trmain">
             <div class="tr">
-              <?php foreach( $data->stations as $station ): ?>
+              <?php foreach( $cal->stations as $station ): ?>
               <span class="th station" style="background:<?=$station->colour?>">
-                <p><?=$station->id?></p>
+                <p><?=$station->no?></p>
                 <p><?=$station->name?></p>
               </span>
               <?php endforeach; ?>
@@ -80,7 +80,7 @@
             <?php foreach( $cal->slots_per_hour as $min ): ?>
             <?php $slot_id = $hour.'h'.$min; ?>
             <div class="tr time-slot" id="<?=$slot_id?>">
-              <?php foreach( $data->stations as $station ): ?>
+              <?php foreach( $cal->stations as $station ): ?>
               <?php $cell_id = 's'.$station->id.'-'.$slot_id; ?>
               <span class="td" id="<?=$cell_id?>"></span>
               <?php endforeach; ?>
@@ -97,5 +97,7 @@
   </main>
 
   <include>site-footer</include>
+
+  <include>book-modal</include>
 
 <include>doc-foot</include>
