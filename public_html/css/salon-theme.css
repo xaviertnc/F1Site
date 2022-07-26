@@ -21,14 +21,18 @@ body > footer {
   padding: 1rem;
 }
 
-main > header {
+main > header,
+body > footer 
+{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 main > header .left-side {
   display: flex;
-  gap: 7px;  
+  gap: 1px;  
 }
 
 nav {

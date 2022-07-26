@@ -1,5 +1,5 @@
   <?php foreach( $view->scripts as $scriptFile ): ?>
-  <script src="js/<?=$scriptFile?>"></script>
+  <script src="<?=$scriptFile?>"></script>
   <?php endforeach; ?>
 
   <script>

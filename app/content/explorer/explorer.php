@@ -19,6 +19,6 @@ $view->subdirs = $files->list( $app->rootDir, 'subdirs' );
 
 $view->title = 'File Explorer Demo';
 
-$view->useStyleFile( 'tree.css' );
+$view->useStyleFile( 'css/tree.css' );
 
 include $view->getFile();

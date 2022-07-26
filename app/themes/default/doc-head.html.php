@@ -7,7 +7,7 @@
   <title><?=$app->title?> - <?=$view->title?></title>
   <base href="<?=$app->baseUri?>">
   <?php foreach( $view->styles as $styleFile ): ?>
-  <link rel="stylesheet" type="text/css" href="css/<?=$styleFile?>">
+  <link rel="stylesheet" type="text/css" href="<?=$styleFile?>">
   <?php endforeach; ?>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <style><?php include $view->getStylesFile(); ?></style>

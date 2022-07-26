@@ -15,7 +15,7 @@ include __DIR__ . '/builder.model.php';
 
 $view->title = 'Content Builder Demo';
 
-$view->useStyleFile( 'vendors/dragula.min.css' );
-$view->useScriptFile( 'vendors/dragula.min.js' );
+$view->useStyleFile( 'css/vendors/dragula.min.css' );
+$view->useScriptFile( 'js/vendors/dragula.min.js' );
 
 include $view->getFile();
