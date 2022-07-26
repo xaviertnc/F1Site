@@ -15,9 +15,11 @@ F1.Modal = {
   {
     options = options || {};
 
-    F1.console.log( 'F1.Modal::show(), selector:', selector, ', opts:', options );    
+    console.log( 'F1.Modal::show(), selector:', selector, ', opts:', options );    
     
     if ( options.event ) event.preventDefault();
+
+    document.documentElement.classList.add('has-modal');
 
     const elModal = document.querySelector( selector );
 
@@ -26,14 +28,23 @@ F1.Modal = {
     const elClose = elModal.querySelector( '.modal-close' );
     if ( elClose && ! elClose.MODAL ) elClose.MODAL = elModal;
 
-    // NB: options.form === F1.Form object
-    if ( options.form )
+    // NB: options.form === F1.Form instance
+    const form = options.form;
+ 
+    if ( form )
     {
       if ( options.clear ) form.clear();
         else if ( options.reset ) form.reset();
           else if ( options.init ) form.init( options.init );
       if ( options.focus ) form.focus();
     }
+
+    elModal.addEventListener( 'click', function( event ) {
+      if ( event.target === elModal ) {
+        elModal.classList.remove( 'open' );
+        document.documentElement.classList.remove('has-modal');
+      }
+    });
 
     elModal.classList.add( 'open' );
   },
@@ -43,6 +54,7 @@ F1.Modal = {
   {
     event.preventDefault();
     elClose.MODAL.classList.remove( 'open' );
+    document.documentElement.classList.remove('has-modal');
   }
 
 };
